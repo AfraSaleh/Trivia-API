@@ -42,3 +42,19 @@ The `./frontend` directory contains a complete React frontend to consume the dat
 Pay special attention to what data the frontend is expecting from each API response to help guide how you format your API. 
 
 [View the README.md within ./frontend for more details.](./frontend/README.md)
+
+# Error Handling 
+* Errors are returned in a JSON format :
+```bash
+{
+    "success": False,
+    "error": 404,
+    "message": "Resource Not Found"
+}
+```
+Errors are returned by the code :
+* 404 : "Resource Not Found"
+* 422 : "unprocessable"
+* 400 : "Bad Request"
+* 405 : "Method Not Found"
+
