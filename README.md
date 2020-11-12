@@ -33,18 +33,114 @@ We started the full stack application for you. It is desiged with some key funct
 
 ### Backend
 
-The `./backend` directory contains a partially completed Flask and SQLAlchemy server. You will work primarily in app.py to define your endpoints and can reference models.py for DB and SQLAlchemy setup. 
+The `./backend` directory contains a partially completed Flask and SQLAlchemy server. You will work primarily in app.py to define your endpoints and can reference models.py for DB and SQLAlchemy setup.
 
-### Frontend
+# Endpoints
+## GET/categories  :
+* curl http://127.0.0.1:5000/categories
+```bash
+ {
+        "categories": {
+            "1": "Science", 
+            "2": "Art", 
+            "3": "Geography", 
+            "4": "History", 
+            "5": "Entertainment", 
+            "6": "Sports"
+        }, 
+        "success": true
+    }
+```
 
-The `./frontend` directory contains a complete React frontend to consume the data from the Flask server. You will need to update the endpoints after you define them in the backend. Those areas are marked with TODO and can be searched for expediency. 
+## GET/questions  :
+* curl http://127.0.0.1:5000/questions
+```bash
+{
+    "categories": {
+        "1": "Science",
+        "2": "Art",
+        "3": "Geography",
+        "4": "History",
+        "5": "Entertainment",
+        "6": "Sports"
+    },
+    "questions": [
+        {
+            "answer": "Tom Cruise",
+            "category": 5,
+            "difficulty": 4,
+            "id": 1,
+            "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
+        },
+        {
+            "answer": "Edward Scissorhands",
+            "category": 5,
+            "difficulty": 3,
+            "id": 2,
+            "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+        }, 
+        {
+            "answer": "Brazil",
+            "category": 6,
+            "difficulty": 3,
+            "id": 3,
+            "question": "Which is the only team to play in every soccer World Cup tournament?"
+        },
+        {
+            "answer": "Uruguay",
+            "category": 6,
+            "difficulty": 4,
+            "id": 4,
+            "question": "Which country won the first ever soccer World Cup in 1930?"
+        },
+        {
+            "answer": "George Washington Carver",
+            "category": 4,
+            "difficulty": 2,
+            "id": 5,
+            "question": "Who invented Peanut Butter?"
+        },
+        {
+            "answer": "Lake Victoria",
+            "category": 3,
+            "difficulty": 2,
+            "id": 6,
+            "question": "What is the largest lake in Africa?"
+        },
+        {
+            "answer": "The Palace of Versailles",
+            "category": 3,
+            "difficulty": 3,
+            "id": 7,
+            "question": "In which royal palace would you find the Hall of Mirrors?"
+        }
+        ],
+    "success": true,
+    "totalquestions": 7
+}
+```
 
-Pay special attention to what data the frontend is expecting from each API response to help guide how you format your API. 
+## POST /questions  :
+* curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{ "question": "where is saudi arabia located ?", "answer": "southwestern Asia", "difficulty": 1, "category": "3" }'
+```bash
+{
+  "message": "Question successfully created!",
+  "success": true
+}
+```
 
-[View the README.md within ./frontend for more details.](./frontend/README.md)
+## DELETE /questions/int:id\  :
+Delete by id:
+* curl http://127.0.0.1:5000/questions/7 -X DELETE
+```bash
+{
+          "success": "True",
+          "message": "Question successfully deleted"
+        }
+```
 
 # Error Handling 
-* Errors are returned in a JSON format :
+ Errors are returned in a JSON format :
 ```bash
 {
     "success": False,
@@ -56,5 +152,15 @@ Errors are returned by the code :
 * 404 : "Resource Not Found"
 * 422 : "unprocessable"
 * 400 : "Bad Request"
-* 405 : "Method Not Found"
+* 405 : "Method Not Found" 
+
+### Frontend
+
+The `./frontend` directory contains a complete React frontend to consume the data from the Flask server. You will need to update the endpoints after you define them in the backend. Those areas are marked with TODO and can be searched for expediency. 
+
+Pay special attention to what data the frontend is expecting from each API response to help guide how you format your API. 
+
+[View the README.md within ./frontend for more details.](./frontend/README.md)
+
+
 
